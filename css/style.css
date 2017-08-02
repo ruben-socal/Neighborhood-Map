@@ -17,9 +17,10 @@ body {
     border-radius: 3px;
     height: 100%;
     line-height: 35px;
-    padding: 10px 10px 30px 10px;
+    padding: 10px 10px 0px 10px;
     text-align: left;
     width: 340px;
+    overflow: scroll;
 }
 
 /*.sidenav {
@@ -114,9 +115,14 @@ footer {
 
 .listings, a {
     text-decoration:  none;
-    font-size: 1.15em;
+    font-size: 1.10em;
     color: white;
     padding: 0;
+}
+
+.read {
+    text-decoration:  none;
+    color: blue;
 }
 
 #pano {

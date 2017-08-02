@@ -1,4 +1,5 @@
 var map;
+var $wikiElem = $('#wikipedia-article');
 // new blank array for all the listing markers.
 var markers = [];
 function initMap() {
@@ -92,28 +93,22 @@ function initMap() {
 
 	// Points of interest Listings that will be shown to the user
 	var locations = [
-		{ title: "Griffith Observatory", location: {lat: 34.1184341, lng: -118.3003935}, id: "loc1", placeid: "ChIJ9590IY3AwoARquS6ie60MUc"},
-		{ title: "Grauman's Chinese Theatre", location: {lat: 34.1020231, lng: -118.3409712}, id: "loc2", placeid: "ChIJw4DCAdrX3IAR-1_GYNuCOfc"},
-		{ title: "Natural History Museum", location: {lat: 34.0169567, lng: -118.2887703}, id: "loc3", placeid: "ChIJXzARBf3HwoARJyT7uZSV-G4"},
-		{ title: "UCLA", location: {lat: 34.068921, lng: -118.4451811}, id: "loc4", placeid: "ChIJZQ9c8IW8woARN0gTXFiTqSU"},
-		{ title: "La Brea Tar Pits", location: {lat: 34.0638079, lng: -118.3554338}, id: "loc5", placeid: "ChIJ_yD1_SK5woARmWLyCit3znQ"},
-		{ title: "Original Farmers Market", location: {lat: 34.0717589, lng: -118.3608171}, id: "loc6", placeid: "ChIJmeuOVTC5woARRgUknn4XqXE"},
-		{ title: "Universal Studios Hollywood", location: {lat: 34.13811680000001, lng: -118.3533783}, id: "loc7", placeid: "ChIJzzgyJU--woARcZqceSdQ3dM"},
-		{ title: "Disneyland", location: {lat: 34.073851, lng: -118.2399583}, id: "loc8", placeid: "ChIJdVYAVPnGwoAR3wmcg09VlJ4"},
-		{ title: "Orginal Pantry Cafe", location: {lat: 34.0463704, lng: -118.2629158}, id: "loc9", placeid: "ChIJDzHVFLfHwoARD8kHhr0hpPM"},
-		{ title: "Los Angeles County Museum of Art", location: {lat: 34.0639323, lng: -118.3592293}, id: "loc10", placeid: "ChIJsXqcyjy5woARNz6sOh0ZmwA"},
-		{ title: "Paramount Pictures", location: {lat: 34.0854228, lng: -118.319153}, id: "loc11", placeid: "ChIJC15Q87a4woARb_n0GB8V8c0"}, // to far
-		{ title: "Walt Disney Concert Hall", location: {lat: 34.0553454, lng: -118.249845}, id: "loc12", placeid: "ChIJ0xG7n03GwoARsDH_OyyMcrM"},
-		{ title: "Staple Center", location: {lat: 34.0430175, lng: -118.2672541}, id: "loc13", placeid: "ChIJkyrqXbjHwoAR1bJ76zx89B8"},
-		{ title: "California Science Center", location: {lat: 34.01586530000001, lng: -118.2861082}, id: "loc14", placeid: "ChIJ21yHTgjIwoARcrUbrsffOB4"},
-		{ title: "Petersen Automotive Museum", location: {lat: 34.062348, lng: -118.3611336}, id: "loc15", placeid: "ChIJaRbaXjy5woARERNJSyktTog"},
-		{ title: "The Comedy Store", location: {lat: 34.095169, lng: -118.3740423}, id: "loc16", placeid: "ChIJg7DLab6-woARHyVknPRuxJA"},
-		{ title: "Fisherman's Outlet", location: {lat: 34.04084149999999, lng: -118.2400648}, id: "loc17", placeid: "ChIJSdzoiTrGwoARNH3kQNv_ODs"},
-		{ title: "San Antonio Winery", location: {lat: 34.0637975, lng: -118.2239144}, id: "loc18", placeid: "ChIJj2tUC2bGwoARwqdCDE37YD0"},
-		{ title: "El Cholo", location: {lat: 34.0435993, lng: -118.2638228}, id: "loc19", placeid: "ChIJue588rfHwoARKIjvFOu2etU"},
-		{ title: "Carney's Restaurant", location: {lat: 34.0959465, lng: -118.3718991}, id: "loc20", placeid: "ChIJJZ-z2PC9woAR7pXuhFbuB_0"},
-		{ title: "Sony Pictures Studio Tour", location: {lat: 34.0176957, lng: -118.4013648}, id: "loc21", placeid: "ChIJm8Pm0Ci6woARAILKQMxxZbM"},
-		{ title: "The Venice Beach Boardwalk", location: {lat: 33.9870046, lng: -118.473761}, id: "loc22", placeid:  "ChIJe7jY6rm6woARcQrmHxB-EGM"}
+		{ title: "Griffith Observatory", location: {lat: 34.1184341, lng: -118.3003935}, pageid: 645747, placeid: "ChIJ9590IY3AwoARquS6ie60MUc"},
+		{ title: "Grauman's Chinese Theatre", location: {lat: 34.1020231, lng: -118.3409712}, pageid: 1261347, placeid: "ChIJw4DCAdrX3IAR-1_GYNuCOfc"},
+		{ title: "Natural History Museum", location: {lat: 34.0169567, lng: -118.2887703}, pageid: 2171864, placeid: "ChIJXzARBf3HwoARJyT7uZSV-G4"},
+		{ title: "UCLA", location: {lat: 34.068921, lng: -118.4451811}, pageid: "37765", placeid: "ChIJZQ9c8IW8woARN0gTXFiTqSU"},
+		{ title: "La Brea Tar Pits", location: {lat: 34.0638079, lng: -118.3554338}, pageid: 298509, placeid: "ChIJ_yD1_SK5woARmWLyCit3znQ"},
+		{ title: "Universal Studios Hollywood", location: {lat: 34.13811680000001, lng: -118.3533783}, pageid: 1717581, placeid: "ChIJzzgyJU--woARcZqceSdQ3dM"},
+		{ title: "Dodger Stadium", location: {lat: 34.073851, lng: -118.2399583}, pageid: 102796, placeid: "ChIJdVYAVPnGwoAR3wmcg09VlJ4", description: ""},
+		{ title: "Los Angeles County Museum of Art", location: {lat: 34.0639323, lng: -118.3592293}, pageid: 373615, placeid: "ChIJsXqcyjy5woARNz6sOh0ZmwA"},
+		{ title: "Paramount Pictures", location: {lat: 34.0854228, lng: -118.319153}, pageid: 22918, placeid: "ChIJC15Q87a4woARb_n0GB8V8c0"},
+		{ title: "Walt Disney Concert Hall", location: {lat: 34.0553454, lng: -118.249845}, pageid: 347933, placeid: "ChIJ0xG7n03GwoARsDH_OyyMcrM"},
+		{ title: "California Science Center", location: {lat: 34.01586530000001, lng: -118.2861082}, pageid: 2323711, placeid: "ChIJ21yHTgjIwoARcrUbrsffOB4"},
+		{ title: "Petersen Automotive Museum", location: {lat: 34.062348, lng: -118.3611336}, pageid: 2728932, placeid: "ChIJaRbaXjy5woARERNJSyktTog"},
+		{ title: "The Comedy Store", location: {lat: 34.095169, lng: -118.3740423}, pageid: 397603, placeid: "ChIJg7DLab6-woARHyVknPRuxJA"},
+		{ title: "San Antonio Winery", location: {lat: 34.0637975, lng: -118.2239144}, pageid: 1686482, placeid: "ChIJj2tUC2bGwoARwqdCDE37YD0"},
+		{ title: "Sony Pictures Studio", location: {lat: 34.0176957, lng: -118.4013648}, pageid: 939909, placeid: "ChIJm8Pm0Ci6woARAILKQMxxZbM"},
+		{ title: "The Santa Monica Pier", location: {lat: 34.010080, lng: -118.496166}, pageid: 1185797, placeid:  "ChIJpwWbUtekwoAR0890MEJvzII"}
 	];
 
 	// Style the markers a bit. This will be our listing marker icon.
@@ -131,6 +126,7 @@ function initMap() {
 		var position = locations[i].location;
 		var title = locations[i].title;
 		var placeid = locations[i].placeid;
+    var pageid = locations[i].pageid;
 
     	// Create a marker per location, and put it into markers array.
 		var marker = new google.maps.Marker({
@@ -139,7 +135,8 @@ function initMap() {
 		 	title: title,
 		 	animation: google.maps.Animation.DROP,
 		 	icon: defaultIcon,
-		 	placeid: placeid
+		 	placeid: placeid,
+      pageid: pageid
 		});
 		// Push the marker to our array of markers.
 		markers.push(marker);
@@ -175,51 +172,82 @@ function initMap() {
 // details about that place.
 function getPlacesDetails(marker, infowindow) {
   var defaultIcon = makeMarkerIcon('a366ff');
-  var service = new google.maps.places.PlacesService(map);
-  service.getDetails({
-    placeId: marker.placeid
-  }, function(place, status) {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-      // Set the marker property on this infowindow so it isn't created again.
-      infowindow.marker = marker;
-      var innerHTML = '<div>';
-      if (place.name) {
-        innerHTML += '<strong>' + place.name + '</strong>';
+  //--------------------- Start Wikipedia API ----------------------------------------------------
+  var wikiRequestTimeout = setTimeout(function(){
+      $("#wikipedia-header").text("failed to get wikipedia resourses");
+  }, 8000 );
+  var articleStr;
+  var link, readMore = '<a href = ></a>';
+  var pageid = marker.pageid;
+  var wikiURL =  "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&pageids=" + pageid;
+  $.ajax({
+      url: wikiURL,
+      dataType: "jsonp",
+      success: function(response){
+        //var articleList = response[1];
+        var articleList = response.query.pages;
+        for(var i in articleList){
+            articleStr = articleList[i].extract;
+            link = "https://en.wikipedia.org/wiki/"+ articleList[i].title;
+        };
+        readMore = ' <a class=\"read\" href=\"'+link+'\" >...read more</a>';
+        if(articleStr.length < 350){
+            readMore = "";
+        }
+        var service = new google.maps.places.PlacesService(map);
+        service.getDetails({
+          placeId: marker.placeid
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            // Set the marker property on this infowindow so it isn't created again.
+            infowindow.marker = marker;
+            var innerHTML = '<div>';
+            if (place.name) {
+              innerHTML += '<strong>' + place.name + '</strong>';
+            }
+            if (articleStr) {
+              innerHTML += '<br>' + articleStr.substring(0,350) + readMore;
+            }
+            if (place.html_attributions) {
+              innerHTML += '<br>' + place.html_attributions;
+            }
+            if (place.formatted_address) {
+              innerHTML += '<br>' + place.formatted_address;
+            }
+            if (place.formatted_phone_number) {
+              innerHTML += '<br>' + place.formatted_phone_number;
+            }
+            if (place.opening_hours) {
+              innerHTML += '<br><br><strong>Hours:</strong><br>' +
+                  place.opening_hours.weekday_text[0] + '<br>' +
+                  place.opening_hours.weekday_text[1] + '<br>' +
+                  place.opening_hours.weekday_text[2] + '<br>' +
+                  place.opening_hours.weekday_text[3] + '<br>' +
+                  place.opening_hours.weekday_text[4] + '<br>' +
+                  place.opening_hours.weekday_text[5] + '<br>' +
+                  place.opening_hours.weekday_text[6];
+            }
+            if (place.photos) {
+              innerHTML += '<br><br><img src="' + place.photos[0].getUrl(
+                  {maxHeight: 100, maxWidth: 200}) + '">';
+            }
+            innerHTML += '</div>';
+            infowindow.setContent(innerHTML);
+            infowindow.open(map, marker);
+            // Make sure the marker property is cleared if the infowindow is closed.
+            infowindow.addListener('closeclick', function() {
+              marker.setIcon(defaultIcon);
+              infowindow.marker = null;
+            });
+          }
+        }); // end google maps services call
+        // clear timeout because wikipedia article is found
+        clearTimeout(wikiRequestTimeout);
       }
-      if (place.html_attributions) {
-        innerHTML += '<br>' + place.html_attributions;
-      }
-      if (place.formatted_address) {
-        innerHTML += '<br>' + place.formatted_address;
-      }
-      if (place.formatted_phone_number) {
-        innerHTML += '<br>' + place.formatted_phone_number;
-      }
-      if (place.opening_hours) {
-        innerHTML += '<br><br><strong>Hours:</strong><br>' +
-            place.opening_hours.weekday_text[0] + '<br>' +
-            place.opening_hours.weekday_text[1] + '<br>' +
-            place.opening_hours.weekday_text[2] + '<br>' +
-            place.opening_hours.weekday_text[3] + '<br>' +
-            place.opening_hours.weekday_text[4] + '<br>' +
-            place.opening_hours.weekday_text[5] + '<br>' +
-            place.opening_hours.weekday_text[6];
-      }
-      if (place.photos) {
-        innerHTML += '<br><br><img src="' + place.photos[0].getUrl(
-            {maxHeight: 100, maxWidth: 200}) + '">';
-      }
-      innerHTML += '</div>';
-      infowindow.setContent(innerHTML);
-      infowindow.open(map, marker);
-      // Make sure the marker property is cleared if the infowindow is closed.
-      infowindow.addListener('closeclick', function() {
-      	marker.setIcon(defaultIcon);
-        infowindow.marker = null;
-      });
-    }
   });
-}
+  //------------------------- end wikipedia API --------------------------------------------------
+
+} // end getPlacesDetailes function
 
 // This function takes in a COLOR, and then creates a new marker
 // icon of that color. The icon will be 21 px wide by 34 high, have an origin
@@ -243,6 +271,8 @@ var Location = function(data) {
   this.marker = data;
 
 };
+
+//-------------------------------------- ViewModel --------------------------------------------------------
 
 // knock objects are called observables which are functions, data-bind used in html are
 // similar to octopus, the connections are made in the html DOM called bidings ex(data-bind="text: name")
@@ -298,6 +328,68 @@ var ViewModel = function() {
 
 }; // end of ViewModel function
 
+//------------------------------------- social media APIs -----------------------------------------------
+
+// function wikiDesciptions( marker, pageid ) {
+// // WIKIPEDIA SEARCH CODE using AJAX
+//   var self = this;
+//     //wikipedia API does not have error handlers, so timeout is used to handle errors, 8 seconds
+//     var wikiRequestTimeout = setTimeout(function(){
+//         $("#wikipedia-header").text("failed to get wikipedia resourses");
+//     }, 8000 );
+//     var articleStr;
+//     //var wikiURL = "https://en.wikipedia.org/w/api.php?action=query&pageid=" + pageid + "&prop=textextracts&format=json&callback=wikiCallback";
+//     var wikiURL =  "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&pageids=" + pageid;
+//     $.ajax({
+//         url: wikiURL,
+//         dataType: "jsonp",
+//         success: function(response){
+//           //var articleList = response[1];
+//           var articleList = response.query.pages;
+//           for(var i in articleList){
+//               marker.description = articleList[i].extract;
+//           };
+//           //articleStr = articleList[0];
+//           // var url = "http://en.wikipedia.org/wiki/" + articleStr;
+//           // $wikiElem.append('<li> <a href="'+ url + '">' + articleStr + '</a></li>');
+
+//           // for(var i=0; i < articleList.length; i++){
+//           //     articleStr = articleList[i];
+//           //     var url = "http://en.wikipedia.org/wiki/" + articleStr;
+//           //     $wikiElem.append('<li> <a href="'+ url + '">' + articleStr + '</a></li>');
+//           // };
+//           // clear timeout because wikipedia article is found
+//           clearTimeout(wikiRequestTimeout);
+//         }
+//     });
+//     // return articleStr;
+// };
+
+//--------------------------------------- modifed wkikpedia descriptions ----------------------------------------
+function wikiDesciptions( index, locations ) {
+// WIKIPEDIA SEARCH CODE using AJAX
+  var self = this;
+    //wikipedia API does not have error handlers, so timeout is used to handle errors, 8 seconds
+    var wikiRequestTimeout = setTimeout(function(){
+        $("#wikipedia-header").text("failed to get wikipedia resourses");
+    }, 8000 );
+    var articleStr;
+    //var wikiURL = "https://en.wikipedia.org/w/api.php?action=query&pageid=" + pageid + "&prop=textextracts&format=json&callback=wikiCallback";
+    var wikiURL =  "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&pageids=" + locations[index].pageid;
+    $.ajax({
+        url: wikiURL,
+        dataType: "jsonp",
+        success: function(response){
+          //var articleList = response[1];
+          var articleList = response.query.pages;
+          for(var i in articleList){
+              locations[index].description = articleList[i].extract;
+          };
+          clearTimeout(wikiRequestTimeout);
+        }
+    });
+    // return articleStr;
+};
 
 
 
