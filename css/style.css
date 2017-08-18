@@ -9,126 +9,71 @@ body {
 .container {
     height: 100%;
     position: relative;
+    background-color: #002266;
 }
+
 
 .interest-points {
-    background: #111;
-    /*border: 1px solid #999;*/
+    background-color: #002266;
     border-radius: 3px;
-    height: 100%;
+    height: 95%;
     line-height: 35px;
-    padding: 10px 10px 0px 10px;
+    padding: 50px 10px 0px 10px;
     text-align: left;
     width: 340px;
-    overflow: scroll;
 }
 
-/*.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
+.interest-points li:hover {
+    background-color: #33b5e5;
 }
 
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: white;
-    display: block;
-    transition: 0.3s;
-}*/
-
-/*.sidenav {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}*/
-
-/*
-#main {
-    transition: margin-left .5s;
-    padding-right: 0;
-    padding-left: 0;
-    height: 92%;
-
-}
-
-container, #row2 {
-    padding-right: 0;
-    padding-left: 0;
-    margin-left: 0;
-    margin-right: 0;
-}
-
-.col-md-12 {
-    padding-right: 0;
-    padding-left: 0;
+.burger-icon {
+    padding: 18px 0 0 160px;
+    cursor: pointer;
 }
 
 
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}*/
-
-
-#sidebar-title {
+#map-title {
     color: white;
     font-weight:normal;
     font-size: 1.6em;
+    padding-left: 10px;
 }
 
-header {
-    padding: 1em;
+#map-header {
+    background-color: #002266;
     color: white;
-    background-color: black;
-    /*clear: left;*/
-    /*text-align: center;*/
-}
-
-.map-header {
     position: absolute;
-    width: 100%;
-    display: top;
-}
-
-footer {
-    text-align: center;
+    height: 50px;
+    top: 0;
 }
 
 #map {
-    bottom:0px;
-    height: 100%;
+    top: 50px;
+    bottom: 0px;
+    height: 95%;
     left: 362px;
     position: absolute;
     right: 0px;
 }
 
-.listings, a {
+.locationLink {
     text-decoration:  none;
     font-size: 1.10em;
     color: white;
     padding: 0;
 }
 
-.read {
-    text-decoration:  none;
-    color: blue;
+.listings {
+    padding: 0;
 }
 
-#pano {
-    width: 200px;
-    height: 200px;
+.read {
+    text-decoration:  none;
+    color: #0033cc;
+    font-weight: bold;
 }
+
 
 #search-listings-area-text {
     width: 70%;
@@ -148,4 +93,46 @@ footer {
 
 #search-icon {
     float: left;
+}
+
+/*-------------------------------------- Media Queries ------------------------------*/
+/* from mobile phone to tablet size screen adjust the positions of the location list, map header and map */
+/* if browser window is smaller than 768, show and hide drop down location list is done with javascript */
+@media screen and (max-width: 768px) {
+    #map-header {
+        left: 0;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .interest-points {
+        position: absolute;
+        z-index: 2;
+        top: 50px;
+        width: 280px;
+        padding-top: 10px;
+    }
+
+    .burger-icon {
+        padding-left: 95px;
+    }
+
+    .listings {
+        overflow: auto;
+    }
+
+    #map {
+        left: 0;
+        position: absolute;
+        z-index: 1;
+        height: 100%;
+    }
+
+    .locationLink {
+        font-size: 1em;
+    }
+
+    #search-listings-area-text {
+        width: 95%;
+    }
 }
