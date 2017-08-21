@@ -303,7 +303,9 @@ var ViewModel = function() {
     this.openMarker = function(locationTitle) {
         self.currentLocation(locationTitle);
         google.maps.event.trigger(self.currentLocation().marker,'click');
-        $(".interest-points").hide();
+        if(window.innerWidth < 769 ) {
+            $(".interest-points").hide();
+        }
     };
 
     // search function uses query observable to filter throught locations list
