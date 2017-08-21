@@ -303,6 +303,7 @@ var ViewModel = function() {
     this.openMarker = function(locationTitle) {
         self.currentLocation(locationTitle);
         google.maps.event.trigger(self.currentLocation().marker,'click');
+        $(".interest-points").hide();
     };
 
     // search function uses query observable to filter throught locations list
@@ -327,7 +328,7 @@ var ViewModel = function() {
                 markers[x].setVisible(false);
             }
         }
-    }
+    };
 
     // on mobile view, click on hamburger icon to show and hide drop down menu location list
     this.showHideList = function() {
@@ -343,7 +344,7 @@ var ViewModel = function() {
                 $(".interest-points").show();
             }
         }
-    }
+    };
 
 }; // end of ViewModel function
 

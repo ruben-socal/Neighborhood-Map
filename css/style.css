@@ -29,7 +29,7 @@ body {
 
 .burger-icon {
     padding: 18px 0 0 160px;
-    cursor: pointer;
+    cursor: default;
 }
 
 
@@ -115,6 +115,7 @@ body {
 
     .burger-icon {
         padding-left: 95px;
+        cursor: pointer;
     }
 
     .listings {
