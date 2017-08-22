@@ -135,36 +135,36 @@ function initMap() {
         this.setIcon(defaultIcon);
     }
 
-	// The following group uses the location array to create an array of markers on initialize.
-	for (var i = 0; i < locations.length; i++) {
-		// Get the position from location array
-		var position = locations[i].location;
-		var title = locations[i].title;
-		var placeid = locations[i].placeid;
+    // The following group uses the location array to create an array of markers on initialize.
+    for (var i = 0; i < locations.length; i++) {
+    	// Get the position from location array
+    	var position = locations[i].location;
+    	var title = locations[i].title;
+    	var placeid = locations[i].placeid;
         var pageid = locations[i].pageid;
 
     	// Create a marker per location, and put it into markers array.
-		var marker = new google.maps.Marker({
-		 	map: map,
-		 	position: position,
-		 	title: title,
-		 	animation: google.maps.Animation.DROP,
-		 	icon: defaultIcon,
-		 	placeid: placeid,
+    	var marker = new google.maps.Marker({
+    	 	map: map,
+    	 	position: position,
+    	 	title: title,
+    	 	animation: google.maps.Animation.DROP,
+    	 	icon: defaultIcon,
+    	 	placeid: placeid,
             pageid: pageid
-		});
-		// Push the marker to our array of markers.
-		markers.push(marker);
-		// Extend the boundaries of the map for each marker
-		bounds.extend(marker.position);
+    	});
+    	// Push the marker to our array of markers.
+    	markers.push(marker);
+    	// Extend the boundaries of the map for each marker
+    	bounds.extend(marker.position);
         // Marker click event listener to open infowindow
         marker.addListener("click", clickMarker );
 
-		// Marker mouse over event listener changes color to highlighedIcon
+    	// Marker mouse over event listener changes color to highlighedIcon
         marker.addListener('mouseover',mouseOver );
         // Marker mouse out event listener changes color to defaultIcon
         marker.addListener('mouseout',mouseOut );
-	}
+    }
 
     // I had trouble accessing markers array inside ViewModel, I found the solution in udacity discussions forum
     // knockout ViewModel was loading before google map, by placing ViewModel binding at the bottom of the InitMap code, this solved the problem
@@ -174,19 +174,6 @@ function initMap() {
     ko.applyBindings( vm );
 
 }// end of initMap() function
-
-// click marker function
-// function clickMarker(marker, largeInfowindow, highlightedIcon) {
-//     var self = marker;
-//     getPlacesDetails(marker, largeInfowindow);
-//     marker.setIcon(highlightedIcon);
-// }
-
-// mouse over, out marker function
-// function mouseEvent(marker, defaultIcon) {
-//     // var this = marker;
-//     marker.setIcon(defaultIcon);
-// }
 
 // google maps api asynchromous error handling credit goes to :
 // https://discussions.udacity.com/t/google-map-async-error-handling/163365/7
