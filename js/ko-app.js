@@ -267,21 +267,21 @@ function getPlacesDetails(marker, infowindow) {
 // icon of that color. The icon will be 21 px wide by 34 high, have an origin
 // of 0, 0 and be anchored at 10, 34).
 function makeMarkerIcon(markerColor) {
-	var markerImage = new google.maps.MarkerImage(
-	   'https://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|'+ markerColor +
-	   '|40|_|%E2%80%A2',
-	   new google.maps.Size(21, 34),
-	   new google.maps.Point(0, 0),
-	   new google.maps.Point(10, 34),
-	   new google.maps.Size(21,34));
-	return markerImage;
+    var markerImage = new google.maps.MarkerImage(
+       'https://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|'+ markerColor +
+       '|40|_|%E2%80%A2',
+       new google.maps.Size(21, 34),
+       new google.maps.Point(0, 0),
+       new google.maps.Point(10, 34),
+       new google.maps.Size(21,34));
+    return markerImage;
 }
 
 // location ko observables used to keep track of changes in data-binding in html
 var Location = function(data) {
-	this.title = ko.observable(data.title);
- 	this.location = ko.observable(data.location);
- 	this.placeid = ko.observable(data.placeid);
+    this.title = ko.observable(data.title);
+    this.location = ko.observable(data.location);
+    this.placeid = ko.observable(data.placeid);
     this.marker = data;
 
 };
@@ -292,24 +292,24 @@ var Location = function(data) {
 // similar to octopus, the connections are made in the html DOM called bidings ex(data-bind="text: name")
 // the functions notify the view(applyBindings) whenever the functions changes
 var ViewModel = function() {
-	// self = this gets the scope of the object ViewModel as opposed
-	// the scope inside a  nested function or forloop this
-	var self = this;
-	// create an empty list for locations
-	this.locationList = ko.observableArray( [] );
+    // self = this gets the scope of the object ViewModel as opposed
+    // the scope inside a  nested function or forloop this
+    var self = this;
+    // create an empty list for locations
+    this.locationList = ko.observableArray( [] );
     // query used to filter search in locations
     this.query = ko.observable('');
-	// array of locations is added to locationList observableArray
-	markers.forEach(function(markerItem) {
-		// new Location is passed as object literal and is part of the ViewModel this object referenced by self
-		self.locationList.push( new Location(markerItem) );
-	});
+    // array of locations is added to locationList observableArray
+    markers.forEach(function(markerItem) {
+        // new Location is passed as object literal and is part of the ViewModel this object referenced by self
+        self.locationList.push( new Location(markerItem) );
+    });
 
-	this.currentLocation = ko.observable( this.locationList()[0] );
-	// click binding passes data object as described in knockout js documents
-	this.displayLocation = function(locationTitle) {
-	 	self.currentLocation(locationTitle);
-	};
+    this.currentLocation = ko.observable( this.locationList()[0] );
+    // click binding passes data object as described in knockout js documents
+    this.displayLocation = function(locationTitle) {
+        self.currentLocation(locationTitle);
+    };
 	// Click binding passes data and opens corresponding marker
     this.openMarker = function(locationTitle) {
         self.currentLocation(locationTitle);
