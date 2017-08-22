@@ -119,6 +119,22 @@ function initMap() {
 	var largeInfowindow = new google.maps.InfoWindow();
 	var bounds = new google.maps.LatLngBounds();
 
+    // click marker function
+    function clickMarker(event) {
+        getPlacesDetails(this, largeInfowindow);
+        this.setIcon(highlightedIcon);
+    }
+
+    // mouse over marker function
+    function mouseOver(event) {
+        this.setIcon(highlightedIcon);
+    }
+
+    // mouse out marker function
+    function mouseOut(event) {
+        this.setIcon(defaultIcon);
+    }
+
 	// The following group uses the location array to create an array of markers on initialize.
 	for (var i = 0; i < locations.length; i++) {
 		// Get the position from location array
@@ -141,20 +157,13 @@ function initMap() {
 		markers.push(marker);
 		// Extend the boundaries of the map for each marker
 		bounds.extend(marker.position);
-		marker.addListener("click", function() {
-		 	getPlacesDetails(this, largeInfowindow);
-		 	this.setIcon(highlightedIcon);
-		});
-		// Two event listeners - one for mouseover, one for mouseout,
-		// to change the colors back and forth.
-		marker.addListener('mouseover', function() {
-	  	this.setIcon(highlightedIcon);
-	  	// this.setAnimation(google.maps.Animation.BOUNCE);
-		});
-		marker.addListener('mouseout', function() {
-	  	this.setIcon(defaultIcon);
-	  	// this.setAnimation(null);
-		});
+        // Marker click event listener to open infowindow
+        marker.addListener("click", clickMarker );
+
+		// Marker mouse over event listener changes color to highlighedIcon
+        marker.addListener('mouseover',mouseOver );
+        // Marker mouse out event listener changes color to defaultIcon
+        marker.addListener('mouseout',mouseOut );
 	}
 
     // I had trouble accessing markers array inside ViewModel, I found the solution in udacity discussions forum
@@ -165,6 +174,19 @@ function initMap() {
     ko.applyBindings( vm );
 
 }// end of initMap() function
+
+// click marker function
+// function clickMarker(marker, largeInfowindow, highlightedIcon) {
+//     var self = marker;
+//     getPlacesDetails(marker, largeInfowindow);
+//     marker.setIcon(highlightedIcon);
+// }
+
+// mouse over, out marker function
+// function mouseEvent(marker, defaultIcon) {
+//     // var this = marker;
+//     marker.setIcon(defaultIcon);
+// }
 
 // google maps api asynchromous error handling credit goes to :
 // https://discussions.udacity.com/t/google-map-async-error-handling/163365/7
@@ -193,9 +215,11 @@ function getPlacesDetails(marker, infowindow) {
         success: function(response){
         var articleList = response.query.pages;
         for(var i in articleList){
-            articleStr = articleList[i].extract;
-            link = "https://en.wikipedia.org/wiki/"+ articleList[i].title;
-        };
+            if( articleStr !== null ) {
+                articleStr = articleList[i].extract;
+                link = "https://en.wikipedia.org/wiki/"+ articleList[i].title;
+            }
+        }
         readMore = ' <a class=\"read\" href=\"'+link+'\" target=\"_blank\">... read more</a>';
         // Google maps Places service uses placeid to get place details
         var service = new google.maps.places.PlacesService(map);
