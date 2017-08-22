@@ -70,8 +70,8 @@ function initMap() {
             ]
         }
     ];
-	// Constructor creates a new map - only center and zoom are required.
-	map = new google.maps.Map(document.getElementById('map'), {
+    // Constructor creates a new map - only center and zoom are required.
+    map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 34.0569678, lng: -118.3338952},
         zoom: 13,
         styles: styles,
@@ -88,27 +88,27 @@ function initMap() {
             position: google.maps.ControlPosition.TOP_CENTER
         }
 
-	});
+    });
 
-	// Points of interest Listings that will be shown to the user
-	var locations = [
-		{ title: "Griffith Observatory", location: {lat: 34.1184341, lng: -118.3003935}, pageid: 645747, placeid: "ChIJ9590IY3AwoARquS6ie60MUc"},
-		{ title: "Grauman's Chinese Theatre", location: {lat: 34.1020231, lng: -118.3409712}, pageid: 1261347, placeid: "ChIJw4DCAdrX3IAR-1_GYNuCOfc"},
-		{ title: "Natural History Museum", location: {lat: 34.0169567, lng: -118.2887703}, pageid: 2171864, placeid: "ChIJXzARBf3HwoARJyT7uZSV-G4"},
-		{ title: "UCLA", location: {lat: 34.068921, lng: -118.4451811}, pageid: "37765", placeid: "ChIJZQ9c8IW8woARN0gTXFiTqSU"},
-		{ title: "La Brea Tar Pits", location: {lat: 34.0638079, lng: -118.3554338}, pageid: 298509, placeid: "ChIJ_yD1_SK5woARmWLyCit3znQ"},
-		{ title: "Universal Studios Hollywood", location: {lat: 34.13811680000001, lng: -118.3533783}, pageid: 1717581, placeid: "ChIJzzgyJU--woARcZqceSdQ3dM"},
-		{ title: "Dodger Stadium", location: {lat: 34.073851, lng: -118.2399583}, pageid: 102796, placeid: "ChIJdVYAVPnGwoAR3wmcg09VlJ4", description: ""},
-		{ title: "Los Angeles County Museum of Art", location: {lat: 34.0639323, lng: -118.3592293}, pageid: 373615, placeid: "ChIJsXqcyjy5woARNz6sOh0ZmwA"},
-		{ title: "Paramount Pictures", location: {lat: 34.0854228, lng: -118.319153}, pageid: 22918, placeid: "ChIJC15Q87a4woARb_n0GB8V8c0"},
-		{ title: "Walt Disney Concert Hall", location: {lat: 34.0553454, lng: -118.249845}, pageid: 347933, placeid: "ChIJ0xG7n03GwoARsDH_OyyMcrM"},
-		{ title: "California Science Center", location: {lat: 34.01586530000001, lng: -118.2861082}, pageid: 2323711, placeid: "ChIJ21yHTgjIwoARcrUbrsffOB4"},
-		{ title: "Petersen Automotive Museum", location: {lat: 34.062348, lng: -118.3611336}, pageid: 2728932, placeid: "ChIJaRbaXjy5woARERNJSyktTog"},
-		{ title: "The Comedy Store", location: {lat: 34.095169, lng: -118.3740423}, pageid: 397603, placeid: "ChIJg7DLab6-woARHyVknPRuxJA"},
-		{ title: "San Antonio Winery", location: {lat: 34.0637975, lng: -118.2239144}, pageid: 1686482, placeid: "ChIJj2tUC2bGwoARwqdCDE37YD0"},
-		{ title: "Sony Pictures Studio", location: {lat: 34.0176957, lng: -118.4013648}, pageid: 939909, placeid: "ChIJm8Pm0Ci6woARAILKQMxxZbM"},
-		{ title: "The Santa Monica Pier", location: {lat: 34.010080, lng: -118.496166}, pageid: 1185797, placeid:  "ChIJpwWbUtekwoAR0890MEJvzII"}
-	];
+    // Points of interest Listings that will be shown to the user
+    var locations = [
+        { title: "Griffith Observatory", location: {lat: 34.1184341, lng: -118.3003935}, pageid: 645747, placeid: "ChIJ9590IY3AwoARquS6ie60MUc"},
+        { title: "Grauman's Chinese Theatre", location: {lat: 34.1020231, lng: -118.3409712}, pageid: 1261347, placeid: "ChIJw4DCAdrX3IAR-1_GYNuCOfc"},
+        { title: "Natural History Museum", location: {lat: 34.0169567, lng: -118.2887703}, pageid: 2171864, placeid: "ChIJXzARBf3HwoARJyT7uZSV-G4"},
+        { title: "UCLA", location: {lat: 34.068921, lng: -118.4451811}, pageid: "37765", placeid: "ChIJZQ9c8IW8woARN0gTXFiTqSU"},
+        { title: "La Brea Tar Pits", location: {lat: 34.0638079, lng: -118.3554338}, pageid: 298509, placeid: "ChIJ_yD1_SK5woARmWLyCit3znQ"},
+        { title: "Universal Studios Hollywood", location: {lat: 34.13811680000001, lng: -118.3533783}, pageid: 1717581, placeid: "ChIJzzgyJU--woARcZqceSdQ3dM"},
+        { title: "Dodger Stadium", location: {lat: 34.073851, lng: -118.2399583}, pageid: 102796, placeid: "ChIJdVYAVPnGwoAR3wmcg09VlJ4", description: ""},
+        { title: "Los Angeles County Museum of Art", location: {lat: 34.0639323, lng: -118.3592293}, pageid: 373615, placeid: "ChIJsXqcyjy5woARNz6sOh0ZmwA"},
+        { title: "Paramount Pictures", location: {lat: 34.0854228, lng: -118.319153}, pageid: 22918, placeid: "ChIJC15Q87a4woARb_n0GB8V8c0"},
+        { title: "Walt Disney Concert Hall", location: {lat: 34.0553454, lng: -118.249845}, pageid: 347933, placeid: "ChIJ0xG7n03GwoARsDH_OyyMcrM"},
+        { title: "California Science Center", location: {lat: 34.01586530000001, lng: -118.2861082}, pageid: 2323711, placeid: "ChIJ21yHTgjIwoARcrUbrsffOB4"},
+        { title: "Petersen Automotive Museum", location: {lat: 34.062348, lng: -118.3611336}, pageid: 2728932, placeid: "ChIJaRbaXjy5woARERNJSyktTog"},
+        { title: "The Comedy Store", location: {lat: 34.095169, lng: -118.3740423}, pageid: 397603, placeid: "ChIJg7DLab6-woARHyVknPRuxJA"},
+        { title: "San Antonio Winery", location: {lat: 34.0637975, lng: -118.2239144}, pageid: 1686482, placeid: "ChIJj2tUC2bGwoARwqdCDE37YD0"},
+        { title: "Sony Pictures Studio", location: {lat: 34.0176957, lng: -118.4013648}, pageid: 939909, placeid: "ChIJm8Pm0Ci6woARAILKQMxxZbM"},
+        { title: "The Santa Monica Pier", location: {lat: 34.010080, lng: -118.496166}, pageid: 1185797, placeid:  "ChIJpwWbUtekwoAR0890MEJvzII"}
+    ];
 
 	// Style the markers a bit. This will be our listing marker icon.
     var defaultIcon = makeMarkerIcon('a366ff');
