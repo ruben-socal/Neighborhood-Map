@@ -202,8 +202,8 @@ function getPlacesDetails(marker, infowindow) {
         success: function(response){
         var articleList = response.query.pages;
         for(var i in articleList){
+            articleStr = articleList[i].extract;
             if( articleStr !== null ) {
-                articleStr = articleList[i].extract;
                 link = "https://en.wikipedia.org/wiki/"+ articleList[i].title;
             }
         }
