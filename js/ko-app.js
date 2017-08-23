@@ -1,6 +1,26 @@
 var map;
 // new blank array for all the listing markers.
 var markers = [];
+// Points of interest Listings that will be shown to the user
+var locations = [
+    { title: "Griffith Observatory", location: {lat: 34.1184341, lng: -118.3003935}, pageid: 645747, placeid: "ChIJ9590IY3AwoARquS6ie60MUc"},
+    { title: "Grauman's Chinese Theatre", location: {lat: 34.1020231, lng: -118.3409712}, pageid: 1261347, placeid: "ChIJw4DCAdrX3IAR-1_GYNuCOfc"},
+    { title: "Natural History Museum", location: {lat: 34.0169567, lng: -118.2887703}, pageid: 2171864, placeid: "ChIJXzARBf3HwoARJyT7uZSV-G4"},
+    { title: "UCLA", location: {lat: 34.068921, lng: -118.4451811}, pageid: "37765", placeid: "ChIJZQ9c8IW8woARN0gTXFiTqSU"},
+    { title: "La Brea Tar Pits", location: {lat: 34.0638079, lng: -118.3554338}, pageid: 298509, placeid: "ChIJ_yD1_SK5woARmWLyCit3znQ"},
+    { title: "Universal Studios Hollywood", location: {lat: 34.13811680000001, lng: -118.3533783}, pageid: 1717581, placeid: "ChIJzzgyJU--woARcZqceSdQ3dM"},
+    { title: "Dodger Stadium", location: {lat: 34.073851, lng: -118.2399583}, pageid: 102796, placeid: "ChIJdVYAVPnGwoAR3wmcg09VlJ4", description: ""},
+    { title: "Los Angeles County Museum of Art", location: {lat: 34.0639323, lng: -118.3592293}, pageid: 373615, placeid: "ChIJsXqcyjy5woARNz6sOh0ZmwA"},
+    { title: "Paramount Pictures", location: {lat: 34.0854228, lng: -118.319153}, pageid: 22918, placeid: "ChIJC15Q87a4woARb_n0GB8V8c0"},
+    { title: "Walt Disney Concert Hall", location: {lat: 34.0553454, lng: -118.249845}, pageid: 347933, placeid: "ChIJ0xG7n03GwoARsDH_OyyMcrM"},
+    { title: "California Science Center", location: {lat: 34.01586530000001, lng: -118.2861082}, pageid: 2323711, placeid: "ChIJ21yHTgjIwoARcrUbrsffOB4"},
+    { title: "Petersen Automotive Museum", location: {lat: 34.062348, lng: -118.3611336}, pageid: 2728932, placeid: "ChIJaRbaXjy5woARERNJSyktTog"},
+    { title: "The Comedy Store", location: {lat: 34.095169, lng: -118.3740423}, pageid: 397603, placeid: "ChIJg7DLab6-woARHyVknPRuxJA"},
+    { title: "San Antonio Winery", location: {lat: 34.0637975, lng: -118.2239144}, pageid: 1686482, placeid: "ChIJj2tUC2bGwoARwqdCDE37YD0"},
+    { title: "Sony Pictures Studio", location: {lat: 34.0176957, lng: -118.4013648}, pageid: 939909, placeid: "ChIJm8Pm0Ci6woARAILKQMxxZbM"},
+    { title: "The Santa Monica Pier", location: {lat: 34.010080, lng: -118.496166}, pageid: 1185797, placeid:  "ChIJpwWbUtekwoAR0890MEJvzII"}
+];
+
 function initMap() {
 
 // Create a styles array to use with the map.
@@ -90,26 +110,6 @@ function initMap() {
 
     });
 
-    // Points of interest Listings that will be shown to the user
-    var locations = [
-        { title: "Griffith Observatory", location: {lat: 34.1184341, lng: -118.3003935}, pageid: 645747, placeid: "ChIJ9590IY3AwoARquS6ie60MUc"},
-        { title: "Grauman's Chinese Theatre", location: {lat: 34.1020231, lng: -118.3409712}, pageid: 1261347, placeid: "ChIJw4DCAdrX3IAR-1_GYNuCOfc"},
-        { title: "Natural History Museum", location: {lat: 34.0169567, lng: -118.2887703}, pageid: 2171864, placeid: "ChIJXzARBf3HwoARJyT7uZSV-G4"},
-        { title: "UCLA", location: {lat: 34.068921, lng: -118.4451811}, pageid: "37765", placeid: "ChIJZQ9c8IW8woARN0gTXFiTqSU"},
-        { title: "La Brea Tar Pits", location: {lat: 34.0638079, lng: -118.3554338}, pageid: 298509, placeid: "ChIJ_yD1_SK5woARmWLyCit3znQ"},
-        { title: "Universal Studios Hollywood", location: {lat: 34.13811680000001, lng: -118.3533783}, pageid: 1717581, placeid: "ChIJzzgyJU--woARcZqceSdQ3dM"},
-        { title: "Dodger Stadium", location: {lat: 34.073851, lng: -118.2399583}, pageid: 102796, placeid: "ChIJdVYAVPnGwoAR3wmcg09VlJ4", description: ""},
-        { title: "Los Angeles County Museum of Art", location: {lat: 34.0639323, lng: -118.3592293}, pageid: 373615, placeid: "ChIJsXqcyjy5woARNz6sOh0ZmwA"},
-        { title: "Paramount Pictures", location: {lat: 34.0854228, lng: -118.319153}, pageid: 22918, placeid: "ChIJC15Q87a4woARb_n0GB8V8c0"},
-        { title: "Walt Disney Concert Hall", location: {lat: 34.0553454, lng: -118.249845}, pageid: 347933, placeid: "ChIJ0xG7n03GwoARsDH_OyyMcrM"},
-        { title: "California Science Center", location: {lat: 34.01586530000001, lng: -118.2861082}, pageid: 2323711, placeid: "ChIJ21yHTgjIwoARcrUbrsffOB4"},
-        { title: "Petersen Automotive Museum", location: {lat: 34.062348, lng: -118.3611336}, pageid: 2728932, placeid: "ChIJaRbaXjy5woARERNJSyktTog"},
-        { title: "The Comedy Store", location: {lat: 34.095169, lng: -118.3740423}, pageid: 397603, placeid: "ChIJg7DLab6-woARHyVknPRuxJA"},
-        { title: "San Antonio Winery", location: {lat: 34.0637975, lng: -118.2239144}, pageid: 1686482, placeid: "ChIJj2tUC2bGwoARwqdCDE37YD0"},
-        { title: "Sony Pictures Studio", location: {lat: 34.0176957, lng: -118.4013648}, pageid: 939909, placeid: "ChIJm8Pm0Ci6woARAILKQMxxZbM"},
-        { title: "The Santa Monica Pier", location: {lat: 34.010080, lng: -118.496166}, pageid: 1185797, placeid:  "ChIJpwWbUtekwoAR0890MEJvzII"}
-    ];
-
 	// Style the markers a bit. This will be our listing marker icon.
     var defaultIcon = makeMarkerIcon('a366ff');
 
@@ -190,8 +190,8 @@ function getPlacesDetails(marker, infowindow) {
     // ajax is used with wikipedia API to get the location description and title, the title is used to to create
     // the wikipedia link for more information
     var wikiRequestTimeout = setTimeout(function(){
-        $("#wikipedia-header").text("failed to get wikipedia resourses");
-    }, 8000 );
+        alert("Wikipedia Resources Could Not Be Found");
+    }, 4000 );
     var articleStr;
     var link, readMore;
     var pageid = marker.pageid;
@@ -200,64 +200,64 @@ function getPlacesDetails(marker, infowindow) {
         url: wikiURL,
         dataType: "jsonp",
         success: function(response){
-        var articleList = response.query.pages;
-        for(var i in articleList){
-            articleStr = articleList[i].extract;
-            if( articleStr !== null ) {
-                link = "https://en.wikipedia.org/wiki/"+ articleList[i].title;
+            var articleList = response.query.pages;
+            for(var i in articleList){
+                if( articleList.hasOwnProperty(i) ) {
+                    articleStr = articleList[i].extract;
+                    link = "https://en.wikipedia.org/wiki/"+ articleList[i].title;
+                }
             }
-        }
-        readMore = ' <a class=\"read\" href=\"'+link+'\" target=\"_blank\">... read more</a>';
-        // Google maps Places service uses placeid to get place details
-        var service = new google.maps.places.PlacesService(map);
-        service.getDetails({
-            placeId: marker.placeid
-        }, function(place, status) {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-                // Set the marker property on this infowindow so it isn't created again.
-                infowindow.marker = marker;
-                var innerHTML = '<div>';
-                if (place.name) {
-                    innerHTML += '<strong>' + place.name + '</strong>';
+            readMore = ' <a class=\"read\" href=\"'+link+'\" target=\"_blank\">... read more</a>';
+            // Google maps Places service uses placeid to get place details
+            var service = new google.maps.places.PlacesService(map);
+            service.getDetails({
+                placeId: marker.placeid
+            }, function(place, status) {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    // Set the marker property on this infowindow so it isn't created again.
+                    infowindow.marker = marker;
+                    var innerHTML = '<div>';
+                    if (place.name) {
+                        innerHTML += '<strong>' + place.name + '</strong>';
+                    }
+                    if (articleStr) {
+                        innerHTML += '<br>' + articleStr.substring(0,350) + readMore;
+                    }
+                    if (place.html_attributions) {
+                        innerHTML += '<br>' + place.html_attributions;
+                    }
+                    if (place.formatted_address) {
+                        innerHTML += '<br>' + place.formatted_address;
+                    }
+                    if (place.formatted_phone_number) {
+                        innerHTML += '<br>' + place.formatted_phone_number;
+                    }
+                    if (place.opening_hours) {
+                        innerHTML += '<br><br><strong>Hours:</strong><br>' +
+                            place.opening_hours.weekday_text[0] + '<br>' +
+                            place.opening_hours.weekday_text[1] + '<br>' +
+                            place.opening_hours.weekday_text[2] + '<br>' +
+                            place.opening_hours.weekday_text[3] + '<br>' +
+                            place.opening_hours.weekday_text[4] + '<br>' +
+                            place.opening_hours.weekday_text[5] + '<br>' +
+                            place.opening_hours.weekday_text[6];
+                    }
+                    if (place.photos) {
+                        innerHTML += '<br><br><img src="' + place.photos[0].getUrl(
+                            {maxHeight: 100, maxWidth: 200}) + '">';
+                    }
+                    innerHTML += '</div>';
+                    infowindow.setContent(innerHTML);
+                    infowindow.open(map, marker);
+                    // Make sure the marker property is cleared if the infowindow is closed.
+                    infowindow.addListener('closeclick', function() {
+                        marker.setIcon(defaultIcon);
+                        infowindow.marker = null;
+                    });
                 }
-                if (articleStr) {
-                    innerHTML += '<br>' + articleStr.substring(0,350) + readMore;
-                }
-                if (place.html_attributions) {
-                    innerHTML += '<br>' + place.html_attributions;
-                }
-                if (place.formatted_address) {
-                    innerHTML += '<br>' + place.formatted_address;
-                }
-                if (place.formatted_phone_number) {
-                    innerHTML += '<br>' + place.formatted_phone_number;
-                }
-                if (place.opening_hours) {
-                    innerHTML += '<br><br><strong>Hours:</strong><br>' +
-                        place.opening_hours.weekday_text[0] + '<br>' +
-                        place.opening_hours.weekday_text[1] + '<br>' +
-                        place.opening_hours.weekday_text[2] + '<br>' +
-                        place.opening_hours.weekday_text[3] + '<br>' +
-                        place.opening_hours.weekday_text[4] + '<br>' +
-                        place.opening_hours.weekday_text[5] + '<br>' +
-                        place.opening_hours.weekday_text[6];
-                }
-                if (place.photos) {
-                    innerHTML += '<br><br><img src="' + place.photos[0].getUrl(
-                        {maxHeight: 100, maxWidth: 200}) + '">';
-                }
-                innerHTML += '</div>';
-                infowindow.setContent(innerHTML);
-                infowindow.open(map, marker);
-                // Make sure the marker property is cleared if the infowindow is closed.
-                infowindow.addListener('closeclick', function() {
-                    marker.setIcon(defaultIcon);
-                    infowindow.marker = null;
-                });
-            }
-        }); // end google maps services call
-        // clear timeout because wikipedia article is found
-        clearTimeout(wikiRequestTimeout);
+            }); // end google maps services call
+            // clear timeout because wikipedia article is found
+            clearTimeout(wikiRequestTimeout);
         }
     });
 
