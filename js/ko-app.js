@@ -189,9 +189,6 @@ function getPlacesDetails(marker, infowindow) {
     var defaultIcon = makeMarkerIcon('a366ff');
     // ajax is used with wikipedia API to get the location description and title, the title is used to to create
     // the wikipedia link for more information
-    var wikiRequestTimeout = setTimeout(function(){
-        alert("Wikipedia Resources Could Not Be Found");
-    }, 4000 );
     var articleStr;
     var link, readMore;
     var pageid = marker.pageid;
@@ -199,6 +196,7 @@ function getPlacesDetails(marker, infowindow) {
     $.ajax({
         url: wikiURL,
         dataType: "jsonp",
+        timeout: 4000,
         success: function(response){
             var articleList = response.query.pages;
             for(var i in articleList){
@@ -256,8 +254,9 @@ function getPlacesDetails(marker, infowindow) {
                     });
                 }
             }); // end google maps services call
-            // clear timeout because wikipedia article is found
-            clearTimeout(wikiRequestTimeout);
+        },
+        error: function(response) {
+             alert("Wikipedia Resources Could Not Be Found");
         }
     });
 
