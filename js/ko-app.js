@@ -187,6 +187,7 @@ function googleError() {
 // details about that place.
 function getPlacesDetails(marker, infowindow) {
     var defaultIcon = makeMarkerIcon('a366ff');
+    var highlightedIcon = makeMarkerIcon('FFFF24');
     // ajax is used with wikipedia API to get the location description and title, the title is used to to create
     // the wikipedia link for more information
     var articleStr;
@@ -214,6 +215,7 @@ function getPlacesDetails(marker, infowindow) {
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
                     // Set the marker property on this infowindow so it isn't created again.
                     infowindow.marker = marker;
+                    marker.setIcon(highlightedIcon);
                     var innerHTML = '<div>';
                     if (place.name) {
                         innerHTML += '<strong>' + place.name + '</strong>';
@@ -294,6 +296,8 @@ var ViewModel = function() {
     // self = this gets the scope of the object ViewModel as opposed
     // the scope inside a  nested function or forloop this
     var self = this;
+    // default marker icon color
+    var defaultIcon = makeMarkerIcon('a366ff');
     // create an empty list for locations
     this.locationList = ko.observableArray( [] );
     // query used to filter search in locations
@@ -311,6 +315,7 @@ var ViewModel = function() {
     };
 	// Click binding passes data and opens corresponding marker
     this.openMarker = function(locationTitle) {
+        self.currentLocation().marker.setIcon(defaultIcon);
         self.currentLocation(locationTitle);
         google.maps.event.trigger(self.currentLocation().marker,'click');
         if(window.innerWidth < 769 ) {
